@@ -1,13 +1,19 @@
 function Sudoku(){
+	document.getElementById("placeSudoku").innerHTML = "";
 	var board = createJSBoard();
 
 	var checkBoard = checkValidSudoku(board);
-	while(checkBoard.isValid == false){
+	var startTime = Date.now();
+	while(!checkBoard.isValid && Date.now() - startTime < 5000){
 		board = shuffleBoard(board, checkBoard.row, checkBoard.col);
 		checkBoard = checkValidSudoku(board);
 	}
 	
-	createHTMLBoard(board);
+	if(!checkBoard.isValid){
+		document.getElementById("placeSudoku").innerHTML = "Cette grille n'était pas valide";
+	} else {
+		createHTMLBoard(board);
+	}
 }
 
 // Créé un tableau JS 9*9 avec des lignes valides
@@ -53,11 +59,11 @@ function checkValidSudoku(board){
 		for(let j = 0;j < columnBoard[i].length;j++){
 			var indexOf = columnBoard[i].indexOf(columnBoard[i][j], j+1);
 			if(indexOf != -1){
-				return{
+				return {
 					isValid : false,
 					row : indexOf,
 					col : i
-				}
+				};
 			}
 		}
 	}
@@ -82,19 +88,19 @@ function checkValidSudoku(board){
 		for(let j = 0;j < squareBoard[i].length;j++){
 			var indexOf = squareBoard[i].indexOf(squareBoard[i][j], j+1);
 			if(indexOf != -1){
-				return{
+				return {
 					isValid : false,
 					line : i
-				}
+				};
 			}
 		}
 	}
 	
-	return{
+	return {
 		isValid : true,
 		line : -1,
 		col : -1
-	}
+	};
 }
 
 // Mélange la ligne d'une matrice
@@ -105,6 +111,7 @@ function shuffleBoard(matrix, row, col = 0){
         [board[i], board[j]] = [board[j], board[i]];
     }
 	matrix[row] = board;
+	isValidSudoku(matrix);
 	return matrix;
 }
 
