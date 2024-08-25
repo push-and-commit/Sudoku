@@ -1,0 +1,74 @@
+body{
+	font-family : 'Montserrat';
+	font-size : 12px;
+}
+
+h1{
+	font-size : 35px;
+}
+h2{
+	font-size : 25px;
+}
+h3{
+	font-size : 15px;
+}
+h4{
+	font-size : 10px;
+}
+
+a{
+	text-decoration : none;
+}
+
+.create-sudoku{
+	position : absolute;
+	top : 50%;
+	left : 50%;
+	display : block;
+	transform : translate(-50%,-50%);
+}
+.button-create{
+	position : relative;
+	z-index : 1;
+	display : inline-block;
+	padding : 10px 20px;
+	color : #3643ba;
+	background-color : #e2e3f5;
+	font-size : 16px;
+	transition : color 0.5s ease;
+}
+.button-create:before{
+	position : absolute;
+	content : '';
+	top : 100%;
+	left : 50%;
+	width : 0;
+	height : 2px;
+	background-color : #3643ba;
+	transition : all 0.75s ease 0.5s;
+}
+.button-create:after{
+	position : absolute;
+	content : '';
+	z-index : -1;
+	top : -100%;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	background-color : #3643ba;
+	transition : all 0.5s ease;
+}
+.button-create:hover{
+	color : #e2e3f5;
+	transition : color 0.5s ease 0.75s;
+}
+.button-create:hover:before{
+	top : 0;
+	left : 0;
+	width : 100%;
+	transition : all 0.5s ease;
+}
+.button-create:hover:after{
+	top : 0;
+	transition : all 0.75s ease 0.5s;
+}

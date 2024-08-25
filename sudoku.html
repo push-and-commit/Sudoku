@@ -1,13 +1,17 @@
 <doctype HTML>
 	<head>
+	<meta charset="UTF8">
 		<script src="javascript/javascript.js"></script>
-		<script rel="stylesheet" href="css/styles.css"></script>
+		<link href="css/styles.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 	</head>
 	<body>
 		<div style="width:100%;margin-bottom:35px;text-align:center;">
 			<h2>Ce script créé des grilles de sudoku</h2>
 		</div>
 		<div id="placeSudoku"></div>
-		<button onClick="Sudoku()">Créer un nouvelle grille</button>
+		<div class="create-sudoku">
+			<a class="button-create" onClick="Sudoku()" href="#">Créer une nouvelle grille</a>
+		</div>
 	</body>
 </doctype HTML>
